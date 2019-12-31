@@ -1,0 +1,122 @@
+SQL> select max(salary) from employees;
+
+MAX(SALARY)                                                                     
+-----------                                                                     
+      24000                                                                     
+
+SQL> select min(hire_date) "First",max(hire_date) "Last" from employees;
+
+First     Last                                                                  
+--------- ---------                                                             
+13-JAN-01 21-APR-08                                                             
+
+SQL> select max(salary) from employees
+  2  group  by department_id;
+
+MAX(SALARY)                                                                     
+-----------                                                                     
+      12008                                                                     
+      11000                                                                     
+       7000                                                                     
+      24000                                                                     
+      13000                                                                     
+      10000                                                                     
+      12008                                                                     
+       8200                                                                     
+      14000                                                                     
+       6500                                                                     
+       9000                                                                     
+
+MAX(SALARY)                                                                     
+-----------                                                                     
+       4400                                                                     
+
+12 rows selected.
+
+SQL> select department_id,max(salary) from employees
+  2  group  by department_id;
+
+DEPARTMENT_ID MAX(SALARY)                                                       
+------------- -----------                                                       
+          100       12008                                                       
+           30       11000                                                       
+                     7000                                                       
+           90       24000                                                       
+           20       13000                                                       
+           70       10000                                                       
+          110       12008                                                       
+           50        8200                                                       
+           80       14000                                                       
+           40        6500                                                       
+           60        9000                                                       
+
+DEPARTMENT_ID MAX(SALARY)                                                       
+------------- -----------                                                       
+           10        4400                                                       
+
+12 rows selected.
+
+SQL> select department_id,max(salary),avg(salary)
+  2  from employees
+  3  group by department_id
+  4  having avg(salary)>8000;
+
+DEPARTMENT_ID MAX(SALARY) AVG(SALARY)                                           
+------------- ----------- -----------                                           
+          100       12008  8601.33333                                           
+           90       24000  19333.3333                                           
+           20       13000        9500                                           
+           70       10000       10000                                           
+          110       12008       10154                                           
+           80       14000  8955.88235                                           
+
+6 rows selected.
+
+SQL> select department_id,max(salary),avg(salary)
+  2  from employees
+  3  where hire_date>='01-jan-2003'
+  4  having avg(salary)>8000;
+select department_id,max(salary),avg(salary)
+       *
+ERROR at line 1:
+ORA-00937: not a single-group group function 
+
+
+SQL> select department_id,max(salary),avg(salary)
+  2  from employees
+  3  group by department_id
+  4  ;
+
+DEPARTMENT_ID MAX(SALARY) AVG(SALARY)                                           
+------------- ----------- -----------                                           
+          100       12008  8601.33333                                           
+           30       11000        4150                                           
+                     7000        7000                                           
+           90       24000  19333.3333                                           
+           20       13000        9500                                           
+           70       10000       10000                                           
+          110       12008       10154                                           
+           50        8200  3475.55556                                           
+           80       14000  8955.88235                                           
+           40        6500        6500                                           
+           60        9000        5760                                           
+
+DEPARTMENT_ID MAX(SALARY) AVG(SALARY)                                           
+------------- ----------- -----------                                           
+           10        4400        4400                                           
+
+12 rows selected.
+
+SQL> select department_id,max(salary),avg(salary)
+  2  from employees
+  3  where hire_date>='01-jan-2003'
+  4  group by department_id
+  5  having avg(salary)>8000;
+
+DEPARTMENT_ID MAX(SALARY) AVG(SALARY)                                           
+------------- ----------- -----------                                           
+           90       24000       20500                                           
+           20       13000        9500                                           
+           80       14000  8955.88235                                           
+
+SQL> spool off;

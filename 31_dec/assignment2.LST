@@ -1,0 +1,1628 @@
+SQL> select max(salary) "Highest Sal",min(salary) "Lowest Sal",sum(salary) "Total Sal",avg(salary) "Avg Sal"
+  2  from employees;
+
+Highest Sal Lowest Sal  Total Sal    Avg Sal                                    
+----------- ---------- ---------- ----------                                    
+      24000       2100     691416 6461.83178                                    
+
+SQL> select max(salary) "Highest Sal",min(salary) "Lowest Sal",sum(salary) "Total Sal",round(avg(salary)) "Avg Sal"
+  2  from employees;
+
+Highest Sal Lowest Sal  Total Sal    Avg Sal                                    
+----------- ---------- ---------- ----------                                    
+      24000       2100     691416       6462                                    
+
+SQL> select max(salary) "Highest Sal",min(salary) "Lowest Sal",sum(salary) "Total Sal",avg(salary) "Avg Sal"
+  2  from employees
+  3  gorup by job_id;
+gorup by job_id
+      *
+ERROR at line 3:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> select max(salary) "Highest Sal",min(salary) "Lowest Sal",sum(salary) "Total Sal",avg(salary) "Avg Sal"
+  2  from employees
+  3  group by job_id;
+
+Highest Sal Lowest Sal  Total Sal    Avg Sal                                    
+----------- ---------- ---------- ----------                                    
+       9000       4200      28800       5760                                    
+      12008      12008      12008      12008                                    
+       8300       8300       8300       8300                                    
+       8200       5800      36400       7280                                    
+      11000      11000      11000      11000                                    
+       4400       4400       4400       4400                                    
+      17000      17000      34000      17000                                    
+       4200       2500      64300       3215                                    
+       9000       6900      39600       7920                                    
+      12008      12008      12008      12008                                    
+       3100       2500      13900       2780                                    
+
+Highest Sal Lowest Sal  Total Sal    Avg Sal                                    
+----------- ---------- ---------- ----------                                    
+      14000      10500      61000      12200                                    
+      13000      13000      13000      13000                                    
+      10000      10000      10000      10000                                    
+      24000      24000      24000      24000                                    
+      11500       6100     250500       8350                                    
+       6000       6000       6000       6000                                    
+       3600       2100      55700       2785                                    
+       6500       6500       6500       6500                                    
+
+19 rows selected.
+
+SQL> select job_id, max(salary) "Highest Sal",min(salary) "Lowest Sal",sum(salary) "Total Sal",avg(salary) "Avg Sal"
+  2  from employees
+  3  group by job_id;
+
+JOB_ID     Highest Sal Lowest Sal  Total Sal    Avg Sal                         
+---------- ----------- ---------- ---------- ----------                         
+IT_PROG           9000       4200      28800       5760                         
+AC_MGR           12008      12008      12008      12008                         
+AC_ACCOUNT        8300       8300       8300       8300                         
+ST_MAN            8200       5800      36400       7280                         
+PU_MAN           11000      11000      11000      11000                         
+AD_ASST           4400       4400       4400       4400                         
+AD_VP            17000      17000      34000      17000                         
+SH_CLERK          4200       2500      64300       3215                         
+FI_ACCOUNT        9000       6900      39600       7920                         
+FI_MGR           12008      12008      12008      12008                         
+PU_CLERK          3100       2500      13900       2780                         
+
+JOB_ID     Highest Sal Lowest Sal  Total Sal    Avg Sal                         
+---------- ----------- ---------- ---------- ----------                         
+SA_MAN           14000      10500      61000      12200                         
+MK_MAN           13000      13000      13000      13000                         
+PR_REP           10000      10000      10000      10000                         
+AD_PRES          24000      24000      24000      24000                         
+SA_REP           11500       6100     250500       8350                         
+MK_REP            6000       6000       6000       6000                         
+ST_CLERK          3600       2100      55700       2785                         
+HR_REP            6500       6500       6500       6500                         
+
+19 rows selected.
+
+SQL> select count(job_id),job_id
+  2  from employees
+  3  group by job_id;
+
+COUNT(JOB_ID) JOB_ID                                                            
+------------- ----------                                                        
+            1 AC_ACCOUNT                                                        
+            1 AC_MGR                                                            
+            1 AD_ASST                                                           
+            1 AD_PRES                                                           
+            2 AD_VP                                                             
+            5 FI_ACCOUNT                                                        
+            1 FI_MGR                                                            
+            1 HR_REP                                                            
+            5 IT_PROG                                                           
+            1 MK_MAN                                                            
+            1 MK_REP                                                            
+
+COUNT(JOB_ID) JOB_ID                                                            
+------------- ----------                                                        
+            1 PR_REP                                                            
+            5 PU_CLERK                                                          
+            1 PU_MAN                                                            
+            5 SA_MAN                                                            
+           30 SA_REP                                                            
+           20 SH_CLERK                                                          
+           20 ST_CLERK                                                          
+            5 ST_MAN                                                            
+
+19 rows selected.
+
+SQL> select count(manager_id)
+  2  from employees;
+
+COUNT(MANAGER_ID)                                                               
+-----------------                                                               
+              106                                                               
+
+SQL> select count(manager_id)
+  2  from employees
+  3  group by manager_id;
+
+COUNT(MANAGER_ID)                                                               
+-----------------                                                               
+               14                                                               
+                5                                                               
+                1                                                               
+                4                                                               
+                5                                                               
+                5                                                               
+                8                                                               
+                8                                                               
+                8                                                               
+                8                                                               
+                8                                                               
+
+COUNT(MANAGER_ID)                                                               
+-----------------                                                               
+                6                                                               
+                6                                                               
+                6                                                               
+                6                                                               
+                6                                                               
+                1                                                               
+                1                                                               
+
+18 rows selected.
+
+SQL> select max(salary)-min(salary) "DIFFERENCE"
+  2  from employees;
+
+DIFFERENCE                                                                      
+----------                                                                      
+     21900                                                                      
+
+SQL> select manager_id,min(salary)
+  2  from employees
+  3  group by manager_id;
+
+MANAGER_ID MIN(SALARY)                                                          
+---------- -----------                                                          
+                 24000                                                          
+       100        5800                                                          
+       123        2500                                                          
+       120        2200                                                          
+       121        2100                                                          
+       147        6200                                                          
+       108        6900                                                          
+       148        6100                                                          
+       149        6200                                                          
+       205        8300                                                          
+       102        9000                                                          
+
+MANAGER_ID MIN(SALARY)                                                          
+---------- -----------                                                          
+       201        6000                                                          
+       101        4400                                                          
+       114        2500                                                          
+       124        2500                                                          
+       145        7000                                                          
+       146        7000                                                          
+       103        4200                                                          
+       122        2200                                                          
+
+19 rows selected.
+
+SQL> select min(salary),manager_id
+  2  from employees
+  3  where manager_id is not null
+  4  gorup by manager_id
+  5  having min(salary)<6000
+  6  order by min(salary) desc;
+gorup by manager_id
+*
+ERROR at line 4:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> select min(salary),manager_id
+  2  from employees
+  3  where manager_id is not null
+  4  gorup by manager_id
+  5  having min(salary)<6000;
+gorup by manager_id
+*
+ERROR at line 4:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> select min(salary),manager_id
+  2  from employees
+  3  where manager_id is not null
+  4  group by manager_id
+  5  having min(salary)<6000;
+
+MIN(SALARY) MANAGER_ID                                                          
+----------- ----------                                                          
+       5800        100                                                          
+       2500        123                                                          
+       2200        120                                                          
+       2100        121                                                          
+       4400        101                                                          
+       2500        114                                                          
+       2500        124                                                          
+       4200        103                                                          
+       2200        122                                                          
+
+9 rows selected.
+
+SQL> select min(salary),manager_id
+  2  from employees
+  3  where manager_id is not null
+  4  group by manager_id
+  5  having min(salary)>6000
+  6  order by min(salary) desc;
+
+MIN(SALARY) MANAGER_ID                                                          
+----------- ----------                                                          
+       9000        102                                                          
+       8300        205                                                          
+       7000        145                                                          
+       7000        146                                                          
+       6900        108                                                          
+       6200        147                                                          
+       6200        149                                                          
+       6100        148                                                          
+
+8 rows selected.
+
+SQL> select count(job_id),job_id
+  2  from employees
+  3  group by job_id;
+
+COUNT(JOB_ID) JOB_ID                                                            
+------------- ----------                                                        
+            1 AC_ACCOUNT                                                        
+            1 AC_MGR                                                            
+            1 AD_ASST                                                           
+            1 AD_PRES                                                           
+            2 AD_VP                                                             
+            5 FI_ACCOUNT                                                        
+            1 FI_MGR                                                            
+            1 HR_REP                                                            
+            5 IT_PROG                                                           
+            1 MK_MAN                                                            
+            1 MK_REP                                                            
+
+COUNT(JOB_ID) JOB_ID                                                            
+------------- ----------                                                        
+            1 PR_REP                                                            
+            5 PU_CLERK                                                          
+            1 PU_MAN                                                            
+            5 SA_MAN                                                            
+           30 SA_REP                                                            
+           20 SH_CLERK                                                          
+           20 ST_CLERK                                                          
+            5 ST_MAN                                                            
+
+19 rows selected.
+
+SQL> select count(*) "Total",sum(decode(to_char(hire_date,'yyyy','2007',1,0)) "2007",sum(decode(to_char(hire_date,'yyyy','2008',1,0)) "2008",sum(decode(to_char(hire_date,'yyyy','2009',1,0)),sum(decode(to_char(hire_date,'yyyy','2010',1,0)) "2010"
+  2  from employees;
+select count(*) "Total",sum(decode(to_char(hire_date,'yyyy','2007',1,0)) "2007",sum(decode(to_char(hire_date,'yyyy','2008',1,0)) "2008",sum(decode(to_char(hire_date,'yyyy','2009',1,0)),sum(decode(to_char(hire_date,'yyyy','2010',1,0)) "2010"
+                                                                         *
+ERROR at line 1:
+ORA-00907: missing right parenthesis 
+
+
+SQL> select count(*) "Total",sum(decode(to_char(hire_date,'yyyy'),'2007',1,0)) "2007",sum(decode(to_char(hire_date,'yyyy'),'2008',1,0)) "2008",sum(decode(to_char(hire_date,'yyyy'),'2009',1,0)),sum(decode(to_char(hire_date,'yyyy'),'2010',1,0)) "2010"
+  2  from employees;
+
+     Total       2007       2008                                                
+---------- ---------- ----------                                                
+SUM(DECODE(TO_CHAR(HIRE_DATE,'YYYY'),'2009',1,0))       2010                    
+------------------------------------------------- ----------                    
+       107         19         11                                                
+                                                0          0                    
+                                                                                
+
+SQL> select count(*) "Total",sum(decode(to_char(hire_date,'yyyy','2007',1,0)) "2007",sum(decode(to_char(hire_date,'yyyy','2008',1,0)) "2008",sum(decode(to_char(hire_date,'yyyy','2009',1,0)) "2009",sum(decode(to_char(hire_date,'yyyy','2010',1,0)) "2010"
+  2  from employees;
+select count(*) "Total",sum(decode(to_char(hire_date,'yyyy','2007',1,0)) "2007",sum(decode(to_char(hire_date,'yyyy','2008',1,0)) "2008",sum(decode(to_char(hire_date,'yyyy','2009',1,0)) "2009",sum(decode(to_char(hire_date,'yyyy','2010',1,0)) "2010"
+                                                                         *
+ERROR at line 1:
+ORA-00907: missing right parenthesis 
+
+
+SQL> select count(*) "Total",sum(decode(to_char(hire_date,'yyyy'),'2007',1,0)) "2007",sum(decode(to_char(hire_date,'yyyy'),'2008',1,0)) "2008",sum(decode(to_char(hire_date,'yyyy'),'2009',1,0)) "2009",sum(decode(to_char(hire_date,'yyyy'),'2010',1,0)) "2010"
+  2  from employees;
+
+     Total       2007       2008       2009       2010                          
+---------- ---------- ---------- ---------- ----------                          
+       107         19         11          0          0                          
+
+SQL> select job_id "Job"
+  2  sum(decode(department_id,20,salary)) "Department 20"
+  3  sum(decode(department_id,50,salary)) "Department 50"
+  4  sum(decode(department_id,80,salary)) "Department 80"
+  5  sum(decode(department_id,90,salary)) "Department 90"
+  6  from employees
+  7  group by job_id;
+sum(decode(department_id,20,salary)) "Department 20"
+*
+ERROR at line 2:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> select job_id "Job",
+  2  sum(decode(department_id,20,salary)) "Department 20",
+  3  sum(decode(department_id,50,salary)) "Department 50",
+  4  sum(decode(department_id,80,salary)) "Department 80",
+  5  sum(decode(department_id,90,salary)) "Department 90",
+  6  from employees
+  7  group by job_id;
+from employees
+*
+ERROR at line 6:
+ORA-00936: missing expression 
+
+
+SQL> select job_id "Job",
+  2  sum(decode(department_id,20,salary)) "Department 20",
+  3  sum(decode(department_id,50,salary)) "Department 50",
+  4  sum(decode(department_id,80,salary)) "Department 80",
+  5  sum(decode(department_id,90,salary)) "Department 90"
+  6  from employees
+  7  group by job_id;
+
+Job        Department 20 Department 50 Department 80 Department 90              
+---------- ------------- ------------- ------------- -------------              
+IT_PROG                                                                         
+AC_MGR                                                                          
+AC_ACCOUNT                                                                      
+ST_MAN                           36400                                          
+PU_MAN                                                                          
+AD_ASST                                                                         
+AD_VP                                                        34000              
+SH_CLERK                         64300                                          
+FI_ACCOUNT                                                                      
+FI_MGR                                                                          
+PU_CLERK                                                                        
+
+Job        Department 20 Department 50 Department 80 Department 90              
+---------- ------------- ------------- ------------- -------------              
+SA_MAN                                         61000                            
+MK_MAN             13000                                                        
+PR_REP                                                                          
+AD_PRES                                                      24000              
+SA_REP                                        243500                            
+MK_REP              6000                                                        
+ST_CLERK                         55700                                          
+HR_REP                                                                          
+
+19 rows selected.
+
+SQL> select getdate() "Date" from dual;
+select getdate() "Date" from dual
+       *
+ERROR at line 1:
+ORA-00904: "GETDATE": invalid identifier 
+
+
+SQL> select curdate() "Date" from dual;
+select curdate() "Date" from dual
+       *
+ERROR at line 1:
+ORA-00904: "CURDATE": invalid identifier 
+
+
+SQL> select curdate "Date" from dual;
+select curdate "Date" from dual
+       *
+ERROR at line 1:
+ORA-00904: "CURDATE": invalid identifier 
+
+
+SQL> select currdate "Date" from dual;
+select currdate "Date" from dual
+       *
+ERROR at line 1:
+ORA-00904: "CURRDATE": invalid identifier 
+
+
+SQL> select sysdate "Date" from dual;
+
+Date                                                                            
+---------                                                                       
+30-DEC-19                                                                       
+
+SQL> select current_date "Date" from dual;
+
+Date                                                                            
+---------                                                                       
+30-DEC-19                                                                       
+
+SQL> select employee_id,last_name,salary "Old Sal",round(salary*1.15) "New Sal"
+  2  from employees;
+
+EMPLOYEE_ID LAST_NAME                    Old Sal    New Sal                     
+----------- ------------------------- ---------- ----------                     
+        100 King                           24000      27600                     
+        101 Kochhar                        17000      19550                     
+        102 De Haan                        17000      19550                     
+        103 Hunold                          9000      10350                     
+        104 Ernst                           6000       6900                     
+        105 Austin                          4800       5520                     
+        106 Pataballa                       4800       5520                     
+        107 Lorentz                         4200       4830                     
+        108 Greenberg                      12008      13809                     
+        109 Faviet                          9000      10350                     
+        110 Chen                            8200       9430                     
+
+EMPLOYEE_ID LAST_NAME                    Old Sal    New Sal                     
+----------- ------------------------- ---------- ----------                     
+        111 Sciarra                         7700       8855                     
+        112 Urman                           7800       8970                     
+        113 Popp                            6900       7935                     
+        114 Raphaely                       11000      12650                     
+        115 Khoo                            3100       3565                     
+        116 Baida                           2900       3335                     
+        117 Tobias                          2800       3220                     
+        118 Himuro                          2600       2990                     
+        119 Colmenares                      2500       2875                     
+        120 Weiss                           8000       9200                     
+        121 Fripp                           8200       9430                     
+
+EMPLOYEE_ID LAST_NAME                    Old Sal    New Sal                     
+----------- ------------------------- ---------- ----------                     
+        122 Kaufling                        7900       9085                     
+        123 Vollman                         6500       7475                     
+        124 Mourgos                         5800       6670                     
+        125 Nayer                           3200       3680                     
+        126 Mikkilineni                     2700       3105                     
+        127 Landry                          2400       2760                     
+        128 Markle                          2200       2530                     
+        129 Bissot                          3300       3795                     
+        130 Atkinson                        2800       3220                     
+        131 Marlow                          2500       2875                     
+        132 Olson                           2100       2415                     
+
+EMPLOYEE_ID LAST_NAME                    Old Sal    New Sal                     
+----------- ------------------------- ---------- ----------                     
+        133 Mallin                          3300       3795                     
+        134 Rogers                          2900       3335                     
+        135 Gee                             2400       2760                     
+        136 Philtanker                      2200       2530                     
+        137 Ladwig                          3600       4140                     
+        138 Stiles                          3200       3680                     
+        139 Seo                             2700       3105                     
+        140 Patel                           2500       2875                     
+        141 Rajs                            3500       4025                     
+        142 Davies                          3100       3565                     
+        143 Matos                           2600       2990                     
+
+EMPLOYEE_ID LAST_NAME                    Old Sal    New Sal                     
+----------- ------------------------- ---------- ----------                     
+        144 Vargas                          2500       2875                     
+        145 Russell                        14000      16100                     
+        146 Partners                       13500      15525                     
+        147 Errazuriz                      12000      13800                     
+        148 Cambrault                      11000      12650                     
+        149 Zlotkey                        10500      12075                     
+        150 Tucker                         10000      11500                     
+        151 Bernstein                       9500      10925                     
+        152 Hall                            9000      10350                     
+        153 Olsen                           8000       9200                     
+        154 Cambrault                       7500       8625                     
+
+EMPLOYEE_ID LAST_NAME                    Old Sal    New Sal                     
+----------- ------------------------- ---------- ----------                     
+        155 Tuvault                         7000       8050                     
+        156 King                           10000      11500                     
+        157 Sully                           9500      10925                     
+        158 McEwen                          9000      10350                     
+        159 Smith                           8000       9200                     
+        160 Doran                           7500       8625                     
+        161 Sewall                          7000       8050                     
+        162 Vishney                        10500      12075                     
+        163 Greene                          9500      10925                     
+        164 Marvins                         7200       8280                     
+        165 Lee                             6800       7820                     
+
+EMPLOYEE_ID LAST_NAME                    Old Sal    New Sal                     
+----------- ------------------------- ---------- ----------                     
+        166 Ande                            6400       7360                     
+        167 Banda                           6200       7130                     
+        168 Ozer                           11500      13225                     
+        169 Bloom                          10000      11500                     
+        170 Fox                             9600      11040                     
+        171 Smith                           7400       8510                     
+        172 Bates                           7300       8395                     
+        173 Kumar                           6100       7015                     
+        174 Abel                           11000      12650                     
+        175 Hutton                          8800      10120                     
+        176 Taylor                          8600       9890                     
+
+EMPLOYEE_ID LAST_NAME                    Old Sal    New Sal                     
+----------- ------------------------- ---------- ----------                     
+        177 Livingston                      8400       9660                     
+        178 Grant                           7000       8050                     
+        179 Johnson                         6200       7130                     
+        180 Taylor                          3200       3680                     
+        181 Fleaur                          3100       3565                     
+        182 Sullivan                        2500       2875                     
+        183 Geoni                           2800       3220                     
+        184 Sarchand                        4200       4830                     
+        185 Bull                            4100       4715                     
+        186 Dellinger                       3400       3910                     
+        187 Cabrio                          3000       3450                     
+
+EMPLOYEE_ID LAST_NAME                    Old Sal    New Sal                     
+----------- ------------------------- ---------- ----------                     
+        188 Chung                           3800       4370                     
+        189 Dilly                           3600       4140                     
+        190 Gates                           2900       3335                     
+        191 Perkins                         2500       2875                     
+        192 Bell                            4000       4600                     
+        193 Everett                         3900       4485                     
+        194 McCain                          3200       3680                     
+        195 Jones                           2800       3220                     
+        196 Walsh                           3100       3565                     
+        197 Feeney                          3000       3450                     
+        198 OConnell                        2600       2990                     
+
+EMPLOYEE_ID LAST_NAME                    Old Sal    New Sal                     
+----------- ------------------------- ---------- ----------                     
+        199 Grant                           2600       2990                     
+        200 Whalen                          4400       5060                     
+        201 Hartstein                      13000      14950                     
+        202 Fay                             6000       6900                     
+        203 Mavris                          6500       7475                     
+        204 Baer                           10000      11500                     
+        205 Higgins                        12008      13809                     
+        206 Gietz                           8300       9545                     
+
+107 rows selected.
+
+SQL> select employee_id,last_name,salary "Old Sal",round(salary*1.15) "New Sal",round(salary*1.15)-salary "Increase"
+  2  from employees;
+
+EMPLOYEE_ID LAST_NAME                    Old Sal    New Sal   Increase          
+----------- ------------------------- ---------- ---------- ----------          
+        100 King                           24000      27600       3600          
+        101 Kochhar                        17000      19550       2550          
+        102 De Haan                        17000      19550       2550          
+        103 Hunold                          9000      10350       1350          
+        104 Ernst                           6000       6900        900          
+        105 Austin                          4800       5520        720          
+        106 Pataballa                       4800       5520        720          
+        107 Lorentz                         4200       4830        630          
+        108 Greenberg                      12008      13809       1801          
+        109 Faviet                          9000      10350       1350          
+        110 Chen                            8200       9430       1230          
+
+EMPLOYEE_ID LAST_NAME                    Old Sal    New Sal   Increase          
+----------- ------------------------- ---------- ---------- ----------          
+        111 Sciarra                         7700       8855       1155          
+        112 Urman                           7800       8970       1170          
+        113 Popp                            6900       7935       1035          
+        114 Raphaely                       11000      12650       1650          
+        115 Khoo                            3100       3565        465          
+        116 Baida                           2900       3335        435          
+        117 Tobias                          2800       3220        420          
+        118 Himuro                          2600       2990        390          
+        119 Colmenares                      2500       2875        375          
+        120 Weiss                           8000       9200       1200          
+        121 Fripp                           8200       9430       1230          
+
+EMPLOYEE_ID LAST_NAME                    Old Sal    New Sal   Increase          
+----------- ------------------------- ---------- ---------- ----------          
+        122 Kaufling                        7900       9085       1185          
+        123 Vollman                         6500       7475        975          
+        124 Mourgos                         5800       6670        870          
+        125 Nayer                           3200       3680        480          
+        126 Mikkilineni                     2700       3105        405          
+        127 Landry                          2400       2760        360          
+        128 Markle                          2200       2530        330          
+        129 Bissot                          3300       3795        495          
+        130 Atkinson                        2800       3220        420          
+        131 Marlow                          2500       2875        375          
+        132 Olson                           2100       2415        315          
+
+EMPLOYEE_ID LAST_NAME                    Old Sal    New Sal   Increase          
+----------- ------------------------- ---------- ---------- ----------          
+        133 Mallin                          3300       3795        495          
+        134 Rogers                          2900       3335        435          
+        135 Gee                             2400       2760        360          
+        136 Philtanker                      2200       2530        330          
+        137 Ladwig                          3600       4140        540          
+        138 Stiles                          3200       3680        480          
+        139 Seo                             2700       3105        405          
+        140 Patel                           2500       2875        375          
+        141 Rajs                            3500       4025        525          
+        142 Davies                          3100       3565        465          
+        143 Matos                           2600       2990        390          
+
+EMPLOYEE_ID LAST_NAME                    Old Sal    New Sal   Increase          
+----------- ------------------------- ---------- ---------- ----------          
+        144 Vargas                          2500       2875        375          
+        145 Russell                        14000      16100       2100          
+        146 Partners                       13500      15525       2025          
+        147 Errazuriz                      12000      13800       1800          
+        148 Cambrault                      11000      12650       1650          
+        149 Zlotkey                        10500      12075       1575          
+        150 Tucker                         10000      11500       1500          
+        151 Bernstein                       9500      10925       1425          
+        152 Hall                            9000      10350       1350          
+        153 Olsen                           8000       9200       1200          
+        154 Cambrault                       7500       8625       1125          
+
+EMPLOYEE_ID LAST_NAME                    Old Sal    New Sal   Increase          
+----------- ------------------------- ---------- ---------- ----------          
+        155 Tuvault                         7000       8050       1050          
+        156 King                           10000      11500       1500          
+        157 Sully                           9500      10925       1425          
+        158 McEwen                          9000      10350       1350          
+        159 Smith                           8000       9200       1200          
+        160 Doran                           7500       8625       1125          
+        161 Sewall                          7000       8050       1050          
+        162 Vishney                        10500      12075       1575          
+        163 Greene                          9500      10925       1425          
+        164 Marvins                         7200       8280       1080          
+        165 Lee                             6800       7820       1020          
+
+EMPLOYEE_ID LAST_NAME                    Old Sal    New Sal   Increase          
+----------- ------------------------- ---------- ---------- ----------          
+        166 Ande                            6400       7360        960          
+        167 Banda                           6200       7130        930          
+        168 Ozer                           11500      13225       1725          
+        169 Bloom                          10000      11500       1500          
+        170 Fox                             9600      11040       1440          
+        171 Smith                           7400       8510       1110          
+        172 Bates                           7300       8395       1095          
+        173 Kumar                           6100       7015        915          
+        174 Abel                           11000      12650       1650          
+        175 Hutton                          8800      10120       1320          
+        176 Taylor                          8600       9890       1290          
+
+EMPLOYEE_ID LAST_NAME                    Old Sal    New Sal   Increase          
+----------- ------------------------- ---------- ---------- ----------          
+        177 Livingston                      8400       9660       1260          
+        178 Grant                           7000       8050       1050          
+        179 Johnson                         6200       7130        930          
+        180 Taylor                          3200       3680        480          
+        181 Fleaur                          3100       3565        465          
+        182 Sullivan                        2500       2875        375          
+        183 Geoni                           2800       3220        420          
+        184 Sarchand                        4200       4830        630          
+        185 Bull                            4100       4715        615          
+        186 Dellinger                       3400       3910        510          
+        187 Cabrio                          3000       3450        450          
+
+EMPLOYEE_ID LAST_NAME                    Old Sal    New Sal   Increase          
+----------- ------------------------- ---------- ---------- ----------          
+        188 Chung                           3800       4370        570          
+        189 Dilly                           3600       4140        540          
+        190 Gates                           2900       3335        435          
+        191 Perkins                         2500       2875        375          
+        192 Bell                            4000       4600        600          
+        193 Everett                         3900       4485        585          
+        194 McCain                          3200       3680        480          
+        195 Jones                           2800       3220        420          
+        196 Walsh                           3100       3565        465          
+        197 Feeney                          3000       3450        450          
+        198 OConnell                        2600       2990        390          
+
+EMPLOYEE_ID LAST_NAME                    Old Sal    New Sal   Increase          
+----------- ------------------------- ---------- ---------- ----------          
+        199 Grant                           2600       2990        390          
+        200 Whalen                          4400       5060        660          
+        201 Hartstein                      13000      14950       1950          
+        202 Fay                             6000       6900        900          
+        203 Mavris                          6500       7475        975          
+        204 Baer                           10000      11500       1500          
+        205 Higgins                        12008      13809       1801          
+        206 Gietz                           8300       9545       1245          
+
+107 rows selected.
+
+SQL> select concat(upper(substr(last_name,1,1),substr(last_name,2)) "Last Name",length(last_name)
+  2  where last_name like "J%" or last_name like "A%" or last_name like "M%"
+  3  from employees
+  4  order by last_name;
+select concat(upper(substr(last_name,1,1),substr(last_name,2)) "Last Name",length(last_name)
+              *
+ERROR at line 1:
+ORA-00909: invalid number of arguments 
+
+
+SQL> select concat(upper(substr(last_name,1,1)),substr(last_name,2)) "Last Name",length(last_name)
+  2  from employees
+  3  order by last_name;
+
+Last Name                 LENGTH(LAST_NAME)                                     
+------------------------- -----------------                                     
+Abel                                      4                                     
+Ande                                      4                                     
+Atkinson                                  8                                     
+Austin                                    6                                     
+Baer                                      4                                     
+Baida                                     5                                     
+Banda                                     5                                     
+Bates                                     5                                     
+Bell                                      4                                     
+Bernstein                                 9                                     
+Bissot                                    6                                     
+
+Last Name                 LENGTH(LAST_NAME)                                     
+------------------------- -----------------                                     
+Bloom                                     5                                     
+Bull                                      4                                     
+Cabrio                                    6                                     
+Cambrault                                 9                                     
+Cambrault                                 9                                     
+Chen                                      4                                     
+Chung                                     5                                     
+Colmenares                               10                                     
+Davies                                    6                                     
+De Haan                                   7                                     
+Dellinger                                 9                                     
+
+Last Name                 LENGTH(LAST_NAME)                                     
+------------------------- -----------------                                     
+Dilly                                     5                                     
+Doran                                     5                                     
+Ernst                                     5                                     
+Errazuriz                                 9                                     
+Everett                                   7                                     
+Faviet                                    6                                     
+Fay                                       3                                     
+Feeney                                    6                                     
+Fleaur                                    6                                     
+Fox                                       3                                     
+Fripp                                     5                                     
+
+Last Name                 LENGTH(LAST_NAME)                                     
+------------------------- -----------------                                     
+Gates                                     5                                     
+Gee                                       3                                     
+Geoni                                     5                                     
+Gietz                                     5                                     
+Grant                                     5                                     
+Grant                                     5                                     
+Greenberg                                 9                                     
+Greene                                    6                                     
+Hall                                      4                                     
+Hartstein                                 9                                     
+Higgins                                   7                                     
+
+Last Name                 LENGTH(LAST_NAME)                                     
+------------------------- -----------------                                     
+Himuro                                    6                                     
+Hunold                                    6                                     
+Hutton                                    6                                     
+Johnson                                   7                                     
+Jones                                     5                                     
+Kaufling                                  8                                     
+Khoo                                      4                                     
+King                                      4                                     
+King                                      4                                     
+Kochhar                                   7                                     
+Kumar                                     5                                     
+
+Last Name                 LENGTH(LAST_NAME)                                     
+------------------------- -----------------                                     
+Ladwig                                    6                                     
+Landry                                    6                                     
+Lee                                       3                                     
+Livingston                               10                                     
+Lorentz                                   7                                     
+Mallin                                    6                                     
+Markle                                    6                                     
+Marlow                                    6                                     
+Marvins                                   7                                     
+Matos                                     5                                     
+Mavris                                    6                                     
+
+Last Name                 LENGTH(LAST_NAME)                                     
+------------------------- -----------------                                     
+McCain                                    6                                     
+McEwen                                    6                                     
+Mikkilineni                              11                                     
+Mourgos                                   7                                     
+Nayer                                     5                                     
+OConnell                                  8                                     
+Olsen                                     5                                     
+Olson                                     5                                     
+Ozer                                      4                                     
+Partners                                  8                                     
+Pataballa                                 9                                     
+
+Last Name                 LENGTH(LAST_NAME)                                     
+------------------------- -----------------                                     
+Patel                                     5                                     
+Perkins                                   7                                     
+Philtanker                               10                                     
+Popp                                      4                                     
+Rajs                                      4                                     
+Raphaely                                  8                                     
+Rogers                                    6                                     
+Russell                                   7                                     
+Sarchand                                  8                                     
+Sciarra                                   7                                     
+Seo                                       3                                     
+
+Last Name                 LENGTH(LAST_NAME)                                     
+------------------------- -----------------                                     
+Sewall                                    6                                     
+Smith                                     5                                     
+Smith                                     5                                     
+Stiles                                    6                                     
+Sullivan                                  8                                     
+Sully                                     5                                     
+Taylor                                    6                                     
+Taylor                                    6                                     
+Tobias                                    6                                     
+Tucker                                    6                                     
+Tuvault                                   7                                     
+
+Last Name                 LENGTH(LAST_NAME)                                     
+------------------------- -----------------                                     
+Urman                                     5                                     
+Vargas                                    6                                     
+Vishney                                   7                                     
+Vollman                                   7                                     
+Walsh                                     5                                     
+Weiss                                     5                                     
+Whalen                                    6                                     
+Zlotkey                                   7                                     
+
+107 rows selected.
+
+SQL> select concat(upper(substr(last_name,1,1)),substr(last_name,2)) "Last Name",length(last_name)
+  2  from employees
+  3  where last_name like "J%" or last_name like "A%" or last_name like "M%"
+  4  order by last_name;
+where last_name like "J%" or last_name like "A%" or last_name like "M%"
+                                                                   *
+ERROR at line 3:
+ORA-00904: "M%": invalid identifier 
+
+
+SQL> select concat(upper(substr(last_name,1,1)),substr(last_name,2)) "Last Name",length(last_name)
+  2  from employees
+  3  where last_name like "J%"
+  4  order by last_name;
+where last_name like "J%"
+                     *
+ERROR at line 3:
+ORA-00904: "J%": invalid identifier 
+
+
+SQL> select concat(upper(substr(last_name,1,1)),substr(last_name,2)) "Last Name",length(last_name)
+  2  from employees
+  3  where last_name like 'J%' or last_name like 'A%' or last_name like 'M%'
+  4  order by last_name;
+
+Last Name                 LENGTH(LAST_NAME)                                     
+------------------------- -----------------                                     
+Abel                                      4                                     
+Ande                                      4                                     
+Atkinson                                  8                                     
+Austin                                    6                                     
+Johnson                                   7                                     
+Jones                                     5                                     
+Mallin                                    6                                     
+Markle                                    6                                     
+Marlow                                    6                                     
+Marvins                                   7                                     
+Matos                                     5                                     
+
+Last Name                 LENGTH(LAST_NAME)                                     
+------------------------- -----------------                                     
+Mavris                                    6                                     
+McCain                                    6                                     
+McEwen                                    6                                     
+Mikkilineni                              11                                     
+Mourgos                                   7                                     
+
+16 rows selected.
+
+SQL> select last_name, (sysdate-hire_date)/30 "Months_Worked"
+  2  from employees
+  3  order by Months_Worked;
+order by Months_Worked
+         *
+ERROR at line 3:
+ORA-00904: "MONTHS_WORKED": invalid identifier 
+
+
+SQL> select last_name, (sysdate-hire_date)/30 "Months_Worked"
+  2  from employees
+  3  order by (sysdate-hire_date)/30;
+
+LAST_NAME                 Months_Worked                                         
+------------------------- -------------                                         
+Banda                        142.365152                                         
+Kumar                        142.365152                                         
+Ande                         143.298485                                         
+Markle                       143.831818                                         
+Lee                          144.298485                                         
+Philtanker                   144.865152                                         
+Geoni                        144.965152                                         
+Zlotkey                      145.131818                                         
+Marvins                      145.298485                                         
+Grant                        145.665152                                         
+Johnson                      145.965152                                         
+
+LAST_NAME                 Months_Worked                                         
+------------------------- -------------                                         
+Perkins                      146.498485                                         
+Gee                          146.731818                                         
+Popp                         146.898485                                         
+Tuvault                      147.365152                                         
+Mourgos                      147.598485                                         
+Cambrault                    148.665152                                         
+Colmenares                   150.865152                                         
+OConnell                     152.531818                                         
+Sullivan                     152.531818                                         
+Grant                        153.465152                                         
+Ernst                        153.565152                                         
+
+LAST_NAME                 Months_Worked                                         
+------------------------- -------------                                         
+Olson                        154.931818                                         
+Bates                        155.498485                                         
+Greene                       155.665152                                         
+Jones                        155.731818                                         
+Smith                        156.465152                                         
+Lorentz                      156.998485                                         
+Cabrio                       156.998485                                         
+Landry                       157.798485                                         
+Cambrault                    158.998485                                         
+Himuro                       159.798485                                         
+Sewall                       160.198485                                         
+
+LAST_NAME                 Months_Worked                                         
+------------------------- -------------                                         
+Mikkilineni                  161.398485                                         
+Rogers                       162.498485                                         
+Gates                        164.031818                                         
+Vargas                       164.098485                                         
+McCain                       164.365152                                         
+Dellinger                    164.598485                                         
+Feeney                       165.665152                                         
+Walsh                        166.631818                                         
+Livingston                   166.665152                                         
+Patel                        167.231818                                         
+Olsen                        167.465152                                         
+
+LAST_NAME                 Months_Worked                                         
+------------------------- -------------                                         
+Taylor                       167.665152                                         
+Bloom                        167.698485                                         
+Matos                        167.965152                                         
+Urman                        168.231818                                         
+Fleaur                       168.631818                                         
+Seo                          168.998485                                         
+Pataballa                    169.231818                                         
+Fox                          169.631818                                         
+Taylor                       169.631818                                         
+Hunold                       170.331818                                         
+Baida                        170.665152                                         
+
+LAST_NAME                 Months_Worked                                         
+------------------------- -------------                                         
+Doran                        170.965152                                         
+Vishney                      172.098485                                         
+Atkinson                     172.498485                                         
+Stiles                       172.631818                                         
+Vollman                      173.165152                                         
+Sciarra                      173.498485                                         
+Chen                         173.565152                                         
+Kochhar                      173.798485                                         
+Bissot                       174.865152                                         
+Hall                         174.865152                                         
+Fay                          174.965152                                         
+
+LAST_NAME                 Months_Worked                                         
+------------------------- -------------                                         
+Dilly                        175.098485                                         
+Tobias                       175.765152                                         
+Nayer                        176.031818                                         
+Austin                       176.731818                                         
+Chung                        177.098485                                         
+Fripp                        179.265152                                         
+Bernstein                    179.831818                                         
+Hutton                       179.998485                                         
+Ozer                         180.265152                                         
+Errazuriz                    180.298485                                         
+Smith                        180.298485                                         
+
+LAST_NAME                 Months_Worked                                         
+------------------------- -------------                                         
+Everett                      180.531818                                         
+Bull                         180.898485                                         
+Marlow                       181.031818                                         
+Tucker                       181.598485                                         
+Davies                       181.631818                                         
+Partners                     182.431818                                         
+Russell                      185.631818                                         
+McEwen                       187.665152                                         
+Weiss                        188.131818                                         
+Mallin                       189.265152                                         
+Abel                         190.398485                                         
+
+LAST_NAME                 Months_Worked                                         
+------------------------- -------------                                         
+Sully                        192.665152                                         
+Hartstein                    193.198485                                         
+Bell                         193.631818                                         
+King                         193.798485                                         
+Sarchand                     193.898485                                         
+Rajs                         197.298485                                         
+Whalen                       198.298485                                         
+Ladwig                       200.465152                                         
+King                         201.365152                                         
+Khoo                         202.365152                                         
+Kaufling                     202.931818                                         
+
+LAST_NAME                 Months_Worked                                         
+------------------------- -------------                                         
+Raphaely                     207.765152                                         
+Greenberg                    211.498485                                         
+Faviet                       211.531818                                         
+Gietz                        213.865152                                         
+Mavris                       213.865152                                         
+Baer                         213.865152                                         
+Higgins                      213.865152                                         
+De Haan                      230.865152                                         
+
+107 rows selected.
+
+SQL> select last_name, round((sysdate-hire_date)/30) "Months_Worked"
+  2  from employees
+  3  order by (sysdate-hire_date)/30;
+
+LAST_NAME                 Months_Worked                                         
+------------------------- -------------                                         
+Banda                               142                                         
+Kumar                               142                                         
+Ande                                143                                         
+Markle                              144                                         
+Lee                                 144                                         
+Philtanker                          145                                         
+Geoni                               145                                         
+Zlotkey                             145                                         
+Marvins                             145                                         
+Grant                               146                                         
+Johnson                             146                                         
+
+LAST_NAME                 Months_Worked                                         
+------------------------- -------------                                         
+Perkins                             146                                         
+Gee                                 147                                         
+Popp                                147                                         
+Tuvault                             147                                         
+Mourgos                             148                                         
+Cambrault                           149                                         
+Colmenares                          151                                         
+OConnell                            153                                         
+Sullivan                            153                                         
+Grant                               153                                         
+Ernst                               154                                         
+
+LAST_NAME                 Months_Worked                                         
+------------------------- -------------                                         
+Olson                               155                                         
+Bates                               155                                         
+Greene                              156                                         
+Jones                               156                                         
+Smith                               156                                         
+Lorentz                             157                                         
+Cabrio                              157                                         
+Landry                              158                                         
+Cambrault                           159                                         
+Himuro                              160                                         
+Sewall                              160                                         
+
+LAST_NAME                 Months_Worked                                         
+------------------------- -------------                                         
+Mikkilineni                         161                                         
+Rogers                              162                                         
+Gates                               164                                         
+Vargas                              164                                         
+McCain                              164                                         
+Dellinger                           165                                         
+Feeney                              166                                         
+Walsh                               167                                         
+Livingston                          167                                         
+Patel                               167                                         
+Olsen                               167                                         
+
+LAST_NAME                 Months_Worked                                         
+------------------------- -------------                                         
+Taylor                              168                                         
+Bloom                               168                                         
+Matos                               168                                         
+Urman                               168                                         
+Fleaur                              169                                         
+Seo                                 169                                         
+Pataballa                           169                                         
+Fox                                 170                                         
+Taylor                              170                                         
+Hunold                              170                                         
+Baida                               171                                         
+
+LAST_NAME                 Months_Worked                                         
+------------------------- -------------                                         
+Doran                               171                                         
+Vishney                             172                                         
+Atkinson                            172                                         
+Stiles                              173                                         
+Vollman                             173                                         
+Sciarra                             173                                         
+Chen                                174                                         
+Kochhar                             174                                         
+Bissot                              175                                         
+Hall                                175                                         
+Fay                                 175                                         
+
+LAST_NAME                 Months_Worked                                         
+------------------------- -------------                                         
+Dilly                               175                                         
+Tobias                              176                                         
+Nayer                               176                                         
+Austin                              177                                         
+Chung                               177                                         
+Fripp                               179                                         
+Bernstein                           180                                         
+Hutton                              180                                         
+Ozer                                180                                         
+Errazuriz                           180                                         
+Smith                               180                                         
+
+LAST_NAME                 Months_Worked                                         
+------------------------- -------------                                         
+Everett                             181                                         
+Bull                                181                                         
+Marlow                              181                                         
+Tucker                              182                                         
+Davies                              182                                         
+Partners                            182                                         
+Russell                             186                                         
+McEwen                              188                                         
+Weiss                               188                                         
+Mallin                              189                                         
+Abel                                190                                         
+
+LAST_NAME                 Months_Worked                                         
+------------------------- -------------                                         
+Sully                               193                                         
+Hartstein                           193                                         
+Bell                                194                                         
+King                                194                                         
+Sarchand                            194                                         
+Rajs                                197                                         
+Whalen                              198                                         
+Ladwig                              200                                         
+King                                201                                         
+Khoo                                202                                         
+Kaufling                            203                                         
+
+LAST_NAME                 Months_Worked                                         
+------------------------- -------------                                         
+Raphaely                            208                                         
+Greenberg                           211                                         
+Faviet                              212                                         
+Gietz                               214                                         
+Mavris                              214                                         
+Baer                                214                                         
+Higgins                             214                                         
+De Haan                             231                                         
+
+107 rows selected.
+
+SQL> select last_name||' earns '||salary||' but wants '||3*salary
+  2  from employees;
+
+LAST_NAME||'EARNS'||SALARY||'BUTWANTS'||3*SALARY                                
+--------------------------------------------------------------------------------
+King earns 24000 but wants 72000                                                
+Kochhar earns 17000 but wants 51000                                             
+De Haan earns 17000 but wants 51000                                             
+Hunold earns 9000 but wants 27000                                               
+Ernst earns 6000 but wants 18000                                                
+Austin earns 4800 but wants 14400                                               
+Pataballa earns 4800 but wants 14400                                            
+Lorentz earns 4200 but wants 12600                                              
+Greenberg earns 12008 but wants 36024                                           
+Faviet earns 9000 but wants 27000                                               
+Chen earns 8200 but wants 24600                                                 
+
+LAST_NAME||'EARNS'||SALARY||'BUTWANTS'||3*SALARY                                
+--------------------------------------------------------------------------------
+Sciarra earns 7700 but wants 23100                                              
+Urman earns 7800 but wants 23400                                                
+Popp earns 6900 but wants 20700                                                 
+Raphaely earns 11000 but wants 33000                                            
+Khoo earns 3100 but wants 9300                                                  
+Baida earns 2900 but wants 8700                                                 
+Tobias earns 2800 but wants 8400                                                
+Himuro earns 2600 but wants 7800                                                
+Colmenares earns 2500 but wants 7500                                            
+Weiss earns 8000 but wants 24000                                                
+Fripp earns 8200 but wants 24600                                                
+
+LAST_NAME||'EARNS'||SALARY||'BUTWANTS'||3*SALARY                                
+--------------------------------------------------------------------------------
+Kaufling earns 7900 but wants 23700                                             
+Vollman earns 6500 but wants 19500                                              
+Mourgos earns 5800 but wants 17400                                              
+Nayer earns 3200 but wants 9600                                                 
+Mikkilineni earns 2700 but wants 8100                                           
+Landry earns 2400 but wants 7200                                                
+Markle earns 2200 but wants 6600                                                
+Bissot earns 3300 but wants 9900                                                
+Atkinson earns 2800 but wants 8400                                              
+Marlow earns 2500 but wants 7500                                                
+Olson earns 2100 but wants 6300                                                 
+
+LAST_NAME||'EARNS'||SALARY||'BUTWANTS'||3*SALARY                                
+--------------------------------------------------------------------------------
+Mallin earns 3300 but wants 9900                                                
+Rogers earns 2900 but wants 8700                                                
+Gee earns 2400 but wants 7200                                                   
+Philtanker earns 2200 but wants 6600                                            
+Ladwig earns 3600 but wants 10800                                               
+Stiles earns 3200 but wants 9600                                                
+Seo earns 2700 but wants 8100                                                   
+Patel earns 2500 but wants 7500                                                 
+Rajs earns 3500 but wants 10500                                                 
+Davies earns 3100 but wants 9300                                                
+Matos earns 2600 but wants 7800                                                 
+
+LAST_NAME||'EARNS'||SALARY||'BUTWANTS'||3*SALARY                                
+--------------------------------------------------------------------------------
+Vargas earns 2500 but wants 7500                                                
+Russell earns 14000 but wants 42000                                             
+Partners earns 13500 but wants 40500                                            
+Errazuriz earns 12000 but wants 36000                                           
+Cambrault earns 11000 but wants 33000                                           
+Zlotkey earns 10500 but wants 31500                                             
+Tucker earns 10000 but wants 30000                                              
+Bernstein earns 9500 but wants 28500                                            
+Hall earns 9000 but wants 27000                                                 
+Olsen earns 8000 but wants 24000                                                
+Cambrault earns 7500 but wants 22500                                            
+
+LAST_NAME||'EARNS'||SALARY||'BUTWANTS'||3*SALARY                                
+--------------------------------------------------------------------------------
+Tuvault earns 7000 but wants 21000                                              
+King earns 10000 but wants 30000                                                
+Sully earns 9500 but wants 28500                                                
+McEwen earns 9000 but wants 27000                                               
+Smith earns 8000 but wants 24000                                                
+Doran earns 7500 but wants 22500                                                
+Sewall earns 7000 but wants 21000                                               
+Vishney earns 10500 but wants 31500                                             
+Greene earns 9500 but wants 28500                                               
+Marvins earns 7200 but wants 21600                                              
+Lee earns 6800 but wants 20400                                                  
+
+LAST_NAME||'EARNS'||SALARY||'BUTWANTS'||3*SALARY                                
+--------------------------------------------------------------------------------
+Ande earns 6400 but wants 19200                                                 
+Banda earns 6200 but wants 18600                                                
+Ozer earns 11500 but wants 34500                                                
+Bloom earns 10000 but wants 30000                                               
+Fox earns 9600 but wants 28800                                                  
+Smith earns 7400 but wants 22200                                                
+Bates earns 7300 but wants 21900                                                
+Kumar earns 6100 but wants 18300                                                
+Abel earns 11000 but wants 33000                                                
+Hutton earns 8800 but wants 26400                                               
+Taylor earns 8600 but wants 25800                                               
+
+LAST_NAME||'EARNS'||SALARY||'BUTWANTS'||3*SALARY                                
+--------------------------------------------------------------------------------
+Livingston earns 8400 but wants 25200                                           
+Grant earns 7000 but wants 21000                                                
+Johnson earns 6200 but wants 18600                                              
+Taylor earns 3200 but wants 9600                                                
+Fleaur earns 3100 but wants 9300                                                
+Sullivan earns 2500 but wants 7500                                              
+Geoni earns 2800 but wants 8400                                                 
+Sarchand earns 4200 but wants 12600                                             
+Bull earns 4100 but wants 12300                                                 
+Dellinger earns 3400 but wants 10200                                            
+Cabrio earns 3000 but wants 9000                                                
+
+LAST_NAME||'EARNS'||SALARY||'BUTWANTS'||3*SALARY                                
+--------------------------------------------------------------------------------
+Chung earns 3800 but wants 11400                                                
+Dilly earns 3600 but wants 10800                                                
+Gates earns 2900 but wants 8700                                                 
+Perkins earns 2500 but wants 7500                                               
+Bell earns 4000 but wants 12000                                                 
+Everett earns 3900 but wants 11700                                              
+McCain earns 3200 but wants 9600                                                
+Jones earns 2800 but wants 8400                                                 
+Walsh earns 3100 but wants 9300                                                 
+Feeney earns 3000 but wants 9000                                                
+OConnell earns 2600 but wants 7800                                              
+
+LAST_NAME||'EARNS'||SALARY||'BUTWANTS'||3*SALARY                                
+--------------------------------------------------------------------------------
+Grant earns 2600 but wants 7800                                                 
+Whalen earns 4400 but wants 13200                                               
+Hartstein earns 13000 but wants 39000                                           
+Fay earns 6000 but wants 18000                                                  
+Mavris earns 6500 but wants 19500                                               
+Baer earns 10000 but wants 30000                                                
+Higgins earns 12008 but wants 36024                                             
+Gietz earns 8300 but wants 24900                                                
+
+107 rows selected.
+
+SQL> select last_name||' earns '||salary||' but wants '||3*salary "Dream Salaries"
+  2  from employees;
+
+Dream Salaries                                                                  
+--------------------------------------------------------------------------------
+King earns 24000 but wants 72000                                                
+Kochhar earns 17000 but wants 51000                                             
+De Haan earns 17000 but wants 51000                                             
+Hunold earns 9000 but wants 27000                                               
+Ernst earns 6000 but wants 18000                                                
+Austin earns 4800 but wants 14400                                               
+Pataballa earns 4800 but wants 14400                                            
+Lorentz earns 4200 but wants 12600                                              
+Greenberg earns 12008 but wants 36024                                           
+Faviet earns 9000 but wants 27000                                               
+Chen earns 8200 but wants 24600                                                 
+
+Dream Salaries                                                                  
+--------------------------------------------------------------------------------
+Sciarra earns 7700 but wants 23100                                              
+Urman earns 7800 but wants 23400                                                
+Popp earns 6900 but wants 20700                                                 
+Raphaely earns 11000 but wants 33000                                            
+Khoo earns 3100 but wants 9300                                                  
+Baida earns 2900 but wants 8700                                                 
+Tobias earns 2800 but wants 8400                                                
+Himuro earns 2600 but wants 7800                                                
+Colmenares earns 2500 but wants 7500                                            
+Weiss earns 8000 but wants 24000                                                
+Fripp earns 8200 but wants 24600                                                
+
+Dream Salaries                                                                  
+--------------------------------------------------------------------------------
+Kaufling earns 7900 but wants 23700                                             
+Vollman earns 6500 but wants 19500                                              
+Mourgos earns 5800 but wants 17400                                              
+Nayer earns 3200 but wants 9600                                                 
+Mikkilineni earns 2700 but wants 8100                                           
+Landry earns 2400 but wants 7200                                                
+Markle earns 2200 but wants 6600                                                
+Bissot earns 3300 but wants 9900                                                
+Atkinson earns 2800 but wants 8400                                              
+Marlow earns 2500 but wants 7500                                                
+Olson earns 2100 but wants 6300                                                 
+
+Dream Salaries                                                                  
+--------------------------------------------------------------------------------
+Mallin earns 3300 but wants 9900                                                
+Rogers earns 2900 but wants 8700                                                
+Gee earns 2400 but wants 7200                                                   
+Philtanker earns 2200 but wants 6600                                            
+Ladwig earns 3600 but wants 10800                                               
+Stiles earns 3200 but wants 9600                                                
+Seo earns 2700 but wants 8100                                                   
+Patel earns 2500 but wants 7500                                                 
+Rajs earns 3500 but wants 10500                                                 
+Davies earns 3100 but wants 9300                                                
+Matos earns 2600 but wants 7800                                                 
+
+Dream Salaries                                                                  
+--------------------------------------------------------------------------------
+Vargas earns 2500 but wants 7500                                                
+Russell earns 14000 but wants 42000                                             
+Partners earns 13500 but wants 40500                                            
+Errazuriz earns 12000 but wants 36000                                           
+Cambrault earns 11000 but wants 33000                                           
+Zlotkey earns 10500 but wants 31500                                             
+Tucker earns 10000 but wants 30000                                              
+Bernstein earns 9500 but wants 28500                                            
+Hall earns 9000 but wants 27000                                                 
+Olsen earns 8000 but wants 24000                                                
+Cambrault earns 7500 but wants 22500                                            
+
+Dream Salaries                                                                  
+--------------------------------------------------------------------------------
+Tuvault earns 7000 but wants 21000                                              
+King earns 10000 but wants 30000                                                
+Sully earns 9500 but wants 28500                                                
+McEwen earns 9000 but wants 27000                                               
+Smith earns 8000 but wants 24000                                                
+Doran earns 7500 but wants 22500                                                
+Sewall earns 7000 but wants 21000                                               
+Vishney earns 10500 but wants 31500                                             
+Greene earns 9500 but wants 28500                                               
+Marvins earns 7200 but wants 21600                                              
+Lee earns 6800 but wants 20400                                                  
+
+Dream Salaries                                                                  
+--------------------------------------------------------------------------------
+Ande earns 6400 but wants 19200                                                 
+Banda earns 6200 but wants 18600                                                
+Ozer earns 11500 but wants 34500                                                
+Bloom earns 10000 but wants 30000                                               
+Fox earns 9600 but wants 28800                                                  
+Smith earns 7400 but wants 22200                                                
+Bates earns 7300 but wants 21900                                                
+Kumar earns 6100 but wants 18300                                                
+Abel earns 11000 but wants 33000                                                
+Hutton earns 8800 but wants 26400                                               
+Taylor earns 8600 but wants 25800                                               
+
+Dream Salaries                                                                  
+--------------------------------------------------------------------------------
+Livingston earns 8400 but wants 25200                                           
+Grant earns 7000 but wants 21000                                                
+Johnson earns 6200 but wants 18600                                              
+Taylor earns 3200 but wants 9600                                                
+Fleaur earns 3100 but wants 9300                                                
+Sullivan earns 2500 but wants 7500                                              
+Geoni earns 2800 but wants 8400                                                 
+Sarchand earns 4200 but wants 12600                                             
+Bull earns 4100 but wants 12300                                                 
+Dellinger earns 3400 but wants 10200                                            
+Cabrio earns 3000 but wants 9000                                                
+
+Dream Salaries                                                                  
+--------------------------------------------------------------------------------
+Chung earns 3800 but wants 11400                                                
+Dilly earns 3600 but wants 10800                                                
+Gates earns 2900 but wants 8700                                                 
+Perkins earns 2500 but wants 7500                                               
+Bell earns 4000 but wants 12000                                                 
+Everett earns 3900 but wants 11700                                              
+McCain earns 3200 but wants 9600                                                
+Jones earns 2800 but wants 8400                                                 
+Walsh earns 3100 but wants 9300                                                 
+Feeney earns 3000 but wants 9000                                                
+OConnell earns 2600 but wants 7800                                              
+
+Dream Salaries                                                                  
+--------------------------------------------------------------------------------
+Grant earns 2600 but wants 7800                                                 
+Whalen earns 4400 but wants 13200                                               
+Hartstein earns 13000 but wants 39000                                           
+Fay earns 6000 but wants 18000                                                  
+Mavris earns 6500 but wants 19500                                               
+Baer earns 10000 but wants 30000                                                
+Higgins earns 12008 but wants 36024                                             
+Gietz earns 8300 but wants 24900                                                
+
+107 rows selected.
+
+SQL> select last_name, lpad(salary,13,'$') "salary"
+  2  from employees;
+
+LAST_NAME                 salary                                                
+------------------------- -------------                                         
+King                      $$$$$$$$24000                                         
+Kochhar                   $$$$$$$$17000                                         
+De Haan                   $$$$$$$$17000                                         
+Hunold                    $$$$$$$$$9000                                         
+Ernst                     $$$$$$$$$6000                                         
+Austin                    $$$$$$$$$4800                                         
+Pataballa                 $$$$$$$$$4800                                         
+Lorentz                   $$$$$$$$$4200                                         
+Greenberg                 $$$$$$$$12008                                         
+Faviet                    $$$$$$$$$9000                                         
+Chen                      $$$$$$$$$8200                                         
+
+LAST_NAME                 salary                                                
+------------------------- -------------                                         
+Sciarra                   $$$$$$$$$7700                                         
+Urman                     $$$$$$$$$7800                                         
+Popp                      $$$$$$$$$6900                                         
+Raphaely                  $$$$$$$$11000                                         
+Khoo                      $$$$$$$$$3100                                         
+Baida                     $$$$$$$$$2900                                         
+Tobias                    $$$$$$$$$2800                                         
+Himuro                    $$$$$$$$$2600                                         
+Colmenares                $$$$$$$$$2500                                         
+Weiss                     $$$$$$$$$8000                                         
+Fripp                     $$$$$$$$$8200                                         
+
+LAST_NAME                 salary                                                
+------------------------- -------------                                         
+Kaufling                  $$$$$$$$$7900                                         
+Vollman                   $$$$$$$$$6500                                         
+Mourgos                   $$$$$$$$$5800                                         
+Nayer                     $$$$$$$$$3200                                         
+Mikkilineni               $$$$$$$$$2700                                         
+Landry                    $$$$$$$$$2400                                         
+Markle                    $$$$$$$$$2200                                         
+Bissot                    $$$$$$$$$3300                                         
+Atkinson                  $$$$$$$$$2800                                         
+Marlow                    $$$$$$$$$2500                                         
+Olson                     $$$$$$$$$2100                                         
+
+LAST_NAME                 salary                                                
+------------------------- -------------                                         
+Mallin                    $$$$$$$$$3300                                         
+Rogers                    $$$$$$$$$2900                                         
+Gee                       $$$$$$$$$2400                                         
+Philtanker                $$$$$$$$$2200                                         
+Ladwig                    $$$$$$$$$3600                                         
+Stiles                    $$$$$$$$$3200                                         
+Seo                       $$$$$$$$$2700                                         
+Patel                     $$$$$$$$$2500                                         
+Rajs                      $$$$$$$$$3500                                         
+Davies                    $$$$$$$$$3100                                         
+Matos                     $$$$$$$$$2600                                         
+
+LAST_NAME                 salary                                                
+------------------------- -------------                                         
+Vargas                    $$$$$$$$$2500                                         
+Russell                   $$$$$$$$14000                                         
+Partners                  $$$$$$$$13500                                         
+Errazuriz                 $$$$$$$$12000                                         
+Cambrault                 $$$$$$$$11000                                         
+Zlotkey                   $$$$$$$$10500                                         
+Tucker                    $$$$$$$$10000                                         
+Bernstein                 $$$$$$$$$9500                                         
+Hall                      $$$$$$$$$9000                                         
+Olsen                     $$$$$$$$$8000                                         
+Cambrault                 $$$$$$$$$7500                                         
+
+LAST_NAME                 salary                                                
+------------------------- -------------                                         
+Tuvault                   $$$$$$$$$7000                                         
+King                      $$$$$$$$10000                                         
+Sully                     $$$$$$$$$9500                                         
+McEwen                    $$$$$$$$$9000                                         
+Smith                     $$$$$$$$$8000                                         
+Doran                     $$$$$$$$$7500                                         
+Sewall                    $$$$$$$$$7000                                         
+Vishney                   $$$$$$$$10500                                         
+Greene                    $$$$$$$$$9500                                         
+Marvins                   $$$$$$$$$7200                                         
+Lee                       $$$$$$$$$6800                                         
+
+LAST_NAME                 salary                                                
+------------------------- -------------                                         
+Ande                      $$$$$$$$$6400                                         
+Banda                     $$$$$$$$$6200                                         
+Ozer                      $$$$$$$$11500                                         
+Bloom                     $$$$$$$$10000                                         
+Fox                       $$$$$$$$$9600                                         
+Smith                     $$$$$$$$$7400                                         
+Bates                     $$$$$$$$$7300                                         
+Kumar                     $$$$$$$$$6100                                         
+Abel                      $$$$$$$$11000                                         
+Hutton                    $$$$$$$$$8800                                         
+Taylor                    $$$$$$$$$8600                                         
+
+LAST_NAME                 salary                                                
+------------------------- -------------                                         
+Livingston                $$$$$$$$$8400                                         
+Grant                     $$$$$$$$$7000                                         
+Johnson                   $$$$$$$$$6200                                         
+Taylor                    $$$$$$$$$3200                                         
+Fleaur                    $$$$$$$$$3100                                         
+Sullivan                  $$$$$$$$$2500                                         
+Geoni                     $$$$$$$$$2800                                         
+Sarchand                  $$$$$$$$$4200                                         
+Bull                      $$$$$$$$$4100                                         
+Dellinger                 $$$$$$$$$3400                                         
+Cabrio                    $$$$$$$$$3000                                         
+
+LAST_NAME                 salary                                                
+------------------------- -------------                                         
+Chung                     $$$$$$$$$3800                                         
+Dilly                     $$$$$$$$$3600                                         
+Gates                     $$$$$$$$$2900                                         
+Perkins                   $$$$$$$$$2500                                         
+Bell                      $$$$$$$$$4000                                         
+Everett                   $$$$$$$$$3900                                         
+McCain                    $$$$$$$$$3200                                         
+Jones                     $$$$$$$$$2800                                         
+Walsh                     $$$$$$$$$3100                                         
+Feeney                    $$$$$$$$$3000                                         
+OConnell                  $$$$$$$$$2600                                         
+
+LAST_NAME                 salary                                                
+------------------------- -------------                                         
+Grant                     $$$$$$$$$2600                                         
+Whalen                    $$$$$$$$$4400                                         
+Hartstein                 $$$$$$$$13000                                         
+Fay                       $$$$$$$$$6000                                         
+Mavris                    $$$$$$$$$6500                                         
+Baer                      $$$$$$$$10000                                         
+Higgins                   $$$$$$$$12008                                         
+Gietz                     $$$$$$$$$8300                                         
+
+107 rows selected.
+
+SQL> spool off;

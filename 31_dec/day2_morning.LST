@@ -1,0 +1,1514 @@
+SQL> select to_char(3456.78,'00,000.00') dual;
+select to_char(3456.78,'00,000.00') dual
+                                       *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> select to_char(3456.78,'00,000.00') from dual;
+
+TO_CHAR(34                                                                      
+----------                                                                      
+ 03,456.78                                                                      
+
+SQL> select to_char(3456.78,'L99,999.99') from dual;
+
+TO_CHAR(3456.78,'L99                                                            
+--------------------                                                            
+           $3,456.78                                                            
+
+SQL> alter session set nls_currency='Rs.';
+
+Session altered.
+
+SQL> select to_char(3456.78,'L99,999.99') from dual;
+
+TO_CHAR(3456.78,'L99                                                            
+--------------------                                                            
+         Rs.3,456.78                                                            
+
+SQL> select to_date('14-dec-19')+5 from dual;
+
+TO_DATE('                                                                       
+---------                                                                       
+19-DEC-19                                                                       
+
+SQL> select to_date('12/09/19','dd/mm/yyyy')+5 from dual;
+
+TO_DATE('                                                                       
+---------                                                                       
+17-SEP-19                                                                       
+
+SQL> select to_date('12/09/19','mm/dd/yyyy')+5 from dual;
+
+TO_DATE('                                                                       
+---------                                                                       
+14-DEC-19                                                                       
+
+SQL> select nvl(1234,null) from dual;
+
+NVL(1234,NULL)                                                                  
+--------------                                                                  
+          1234                                                                  
+
+SQL> select nvl(null,1) from dual;
+
+NVL(NULL,1)                                                                     
+-----------                                                                     
+          1                                                                     
+
+SQL> select employee_id,salary,commission_pct, salary*commission_pct from employees;
+
+EMPLOYEE_ID     SALARY COMMISSION_PCT SALARY*COMMISSION_PCT                     
+----------- ---------- -------------- ---------------------                     
+        100      24000                                                          
+        101      17000                                                          
+        102      17000                                                          
+        103       9000                                                          
+        104       6000                                                          
+        105       4800                                                          
+        106       4800                                                          
+        107       4200                                                          
+        108      12008                                                          
+        109       9000                                                          
+        110       8200                                                          
+
+EMPLOYEE_ID     SALARY COMMISSION_PCT SALARY*COMMISSION_PCT                     
+----------- ---------- -------------- ---------------------                     
+        111       7700                                                          
+        112       7800                                                          
+        113       6900                                                          
+        114      11000                                                          
+        115       3100                                                          
+        116       2900                                                          
+        117       2800                                                          
+        118       2600                                                          
+        119       2500                                                          
+        120       8000                                                          
+        121       8200                                                          
+
+EMPLOYEE_ID     SALARY COMMISSION_PCT SALARY*COMMISSION_PCT                     
+----------- ---------- -------------- ---------------------                     
+        122       7900                                                          
+        123       6500                                                          
+        124       5800                                                          
+        125       3200                                                          
+        126       2700                                                          
+        127       2400                                                          
+        128       2200                                                          
+        129       3300                                                          
+        130       2800                                                          
+        131       2500                                                          
+        132       2100                                                          
+
+EMPLOYEE_ID     SALARY COMMISSION_PCT SALARY*COMMISSION_PCT                     
+----------- ---------- -------------- ---------------------                     
+        133       3300                                                          
+        134       2900                                                          
+        135       2400                                                          
+        136       2200                                                          
+        137       3600                                                          
+        138       3200                                                          
+        139       2700                                                          
+        140       2500                                                          
+        141       3500                                                          
+        142       3100                                                          
+        143       2600                                                          
+
+EMPLOYEE_ID     SALARY COMMISSION_PCT SALARY*COMMISSION_PCT                     
+----------- ---------- -------------- ---------------------                     
+        144       2500                                                          
+        145      14000             .4                  5600                     
+        146      13500             .3                  4050                     
+        147      12000             .3                  3600                     
+        148      11000             .3                  3300                     
+        149      10500             .2                  2100                     
+        150      10000             .3                  3000                     
+        151       9500            .25                  2375                     
+        152       9000            .25                  2250                     
+        153       8000             .2                  1600                     
+        154       7500             .2                  1500                     
+
+EMPLOYEE_ID     SALARY COMMISSION_PCT SALARY*COMMISSION_PCT                     
+----------- ---------- -------------- ---------------------                     
+        155       7000            .15                  1050                     
+        156      10000            .35                  3500                     
+        157       9500            .35                  3325                     
+        158       9000            .35                  3150                     
+        159       8000             .3                  2400                     
+        160       7500             .3                  2250                     
+        161       7000            .25                  1750                     
+        162      10500            .25                  2625                     
+        163       9500            .15                  1425                     
+        164       7200             .1                   720                     
+        165       6800             .1                   680                     
+
+EMPLOYEE_ID     SALARY COMMISSION_PCT SALARY*COMMISSION_PCT                     
+----------- ---------- -------------- ---------------------                     
+        166       6400             .1                   640                     
+        167       6200             .1                   620                     
+        168      11500            .25                  2875                     
+        169      10000             .2                  2000                     
+        170       9600             .2                  1920                     
+        171       7400            .15                  1110                     
+        172       7300            .15                  1095                     
+        173       6100             .1                   610                     
+        174      11000             .3                  3300                     
+        175       8800            .25                  2200                     
+        176       8600             .2                  1720                     
+
+EMPLOYEE_ID     SALARY COMMISSION_PCT SALARY*COMMISSION_PCT                     
+----------- ---------- -------------- ---------------------                     
+        177       8400             .2                  1680                     
+        178       7000            .15                  1050                     
+        179       6200             .1                   620                     
+        180       3200                                                          
+        181       3100                                                          
+        182       2500                                                          
+        183       2800                                                          
+        184       4200                                                          
+        185       4100                                                          
+        186       3400                                                          
+        187       3000                                                          
+
+EMPLOYEE_ID     SALARY COMMISSION_PCT SALARY*COMMISSION_PCT                     
+----------- ---------- -------------- ---------------------                     
+        188       3800                                                          
+        189       3600                                                          
+        190       2900                                                          
+        191       2500                                                          
+        192       4000                                                          
+        193       3900                                                          
+        194       3200                                                          
+        195       2800                                                          
+        196       3100                                                          
+        197       3000                                                          
+        198       2600                                                          
+
+EMPLOYEE_ID     SALARY COMMISSION_PCT SALARY*COMMISSION_PCT                     
+----------- ---------- -------------- ---------------------                     
+        199       2600                                                          
+        200       4400                                                          
+        201      13000                                                          
+        202       6000                                                          
+        203       6500                                                          
+        204      10000                                                          
+        205      12008                                                          
+        206       8300                                                          
+
+107 rows selected.
+
+SQL> select employee_id,salary,commission_pct, salary*commission_pct +salary "take_home" from employees;
+
+EMPLOYEE_ID     SALARY COMMISSION_PCT  take_home                                
+----------- ---------- -------------- ----------                                
+        100      24000                                                          
+        101      17000                                                          
+        102      17000                                                          
+        103       9000                                                          
+        104       6000                                                          
+        105       4800                                                          
+        106       4800                                                          
+        107       4200                                                          
+        108      12008                                                          
+        109       9000                                                          
+        110       8200                                                          
+
+EMPLOYEE_ID     SALARY COMMISSION_PCT  take_home                                
+----------- ---------- -------------- ----------                                
+        111       7700                                                          
+        112       7800                                                          
+        113       6900                                                          
+        114      11000                                                          
+        115       3100                                                          
+        116       2900                                                          
+        117       2800                                                          
+        118       2600                                                          
+        119       2500                                                          
+        120       8000                                                          
+        121       8200                                                          
+
+EMPLOYEE_ID     SALARY COMMISSION_PCT  take_home                                
+----------- ---------- -------------- ----------                                
+        122       7900                                                          
+        123       6500                                                          
+        124       5800                                                          
+        125       3200                                                          
+        126       2700                                                          
+        127       2400                                                          
+        128       2200                                                          
+        129       3300                                                          
+        130       2800                                                          
+        131       2500                                                          
+        132       2100                                                          
+
+EMPLOYEE_ID     SALARY COMMISSION_PCT  take_home                                
+----------- ---------- -------------- ----------                                
+        133       3300                                                          
+        134       2900                                                          
+        135       2400                                                          
+        136       2200                                                          
+        137       3600                                                          
+        138       3200                                                          
+        139       2700                                                          
+        140       2500                                                          
+        141       3500                                                          
+        142       3100                                                          
+        143       2600                                                          
+
+EMPLOYEE_ID     SALARY COMMISSION_PCT  take_home                                
+----------- ---------- -------------- ----------                                
+        144       2500                                                          
+        145      14000             .4      19600                                
+        146      13500             .3      17550                                
+        147      12000             .3      15600                                
+        148      11000             .3      14300                                
+        149      10500             .2      12600                                
+        150      10000             .3      13000                                
+        151       9500            .25      11875                                
+        152       9000            .25      11250                                
+        153       8000             .2       9600                                
+        154       7500             .2       9000                                
+
+EMPLOYEE_ID     SALARY COMMISSION_PCT  take_home                                
+----------- ---------- -------------- ----------                                
+        155       7000            .15       8050                                
+        156      10000            .35      13500                                
+        157       9500            .35      12825                                
+        158       9000            .35      12150                                
+        159       8000             .3      10400                                
+        160       7500             .3       9750                                
+        161       7000            .25       8750                                
+        162      10500            .25      13125                                
+        163       9500            .15      10925                                
+        164       7200             .1       7920                                
+        165       6800             .1       7480                                
+
+EMPLOYEE_ID     SALARY COMMISSION_PCT  take_home                                
+----------- ---------- -------------- ----------                                
+        166       6400             .1       7040                                
+        167       6200             .1       6820                                
+        168      11500            .25      14375                                
+        169      10000             .2      12000                                
+        170       9600             .2      11520                                
+        171       7400            .15       8510                                
+        172       7300            .15       8395                                
+        173       6100             .1       6710                                
+        174      11000             .3      14300                                
+        175       8800            .25      11000                                
+        176       8600             .2      10320                                
+
+EMPLOYEE_ID     SALARY COMMISSION_PCT  take_home                                
+----------- ---------- -------------- ----------                                
+        177       8400             .2      10080                                
+        178       7000            .15       8050                                
+        179       6200             .1       6820                                
+        180       3200                                                          
+        181       3100                                                          
+        182       2500                                                          
+        183       2800                                                          
+        184       4200                                                          
+        185       4100                                                          
+        186       3400                                                          
+        187       3000                                                          
+
+EMPLOYEE_ID     SALARY COMMISSION_PCT  take_home                                
+----------- ---------- -------------- ----------                                
+        188       3800                                                          
+        189       3600                                                          
+        190       2900                                                          
+        191       2500                                                          
+        192       4000                                                          
+        193       3900                                                          
+        194       3200                                                          
+        195       2800                                                          
+        196       3100                                                          
+        197       3000                                                          
+        198       2600                                                          
+
+EMPLOYEE_ID     SALARY COMMISSION_PCT  take_home                                
+----------- ---------- -------------- ----------                                
+        199       2600                                                          
+        200       4400                                                          
+        201      13000                                                          
+        202       6000                                                          
+        203       6500                                                          
+        204      10000                                                          
+        205      12008                                                          
+        206       8300                                                          
+
+107 rows selected.
+
+SQL> select employee_id,salary,commission_pct, salary*nvl(commission_pct,0) +salary "take_home" from employees;
+
+EMPLOYEE_ID     SALARY COMMISSION_PCT  take_home                                
+----------- ---------- -------------- ----------                                
+        100      24000                     24000                                
+        101      17000                     17000                                
+        102      17000                     17000                                
+        103       9000                      9000                                
+        104       6000                      6000                                
+        105       4800                      4800                                
+        106       4800                      4800                                
+        107       4200                      4200                                
+        108      12008                     12008                                
+        109       9000                      9000                                
+        110       8200                      8200                                
+
+EMPLOYEE_ID     SALARY COMMISSION_PCT  take_home                                
+----------- ---------- -------------- ----------                                
+        111       7700                      7700                                
+        112       7800                      7800                                
+        113       6900                      6900                                
+        114      11000                     11000                                
+        115       3100                      3100                                
+        116       2900                      2900                                
+        117       2800                      2800                                
+        118       2600                      2600                                
+        119       2500                      2500                                
+        120       8000                      8000                                
+        121       8200                      8200                                
+
+EMPLOYEE_ID     SALARY COMMISSION_PCT  take_home                                
+----------- ---------- -------------- ----------                                
+        122       7900                      7900                                
+        123       6500                      6500                                
+        124       5800                      5800                                
+        125       3200                      3200                                
+        126       2700                      2700                                
+        127       2400                      2400                                
+        128       2200                      2200                                
+        129       3300                      3300                                
+        130       2800                      2800                                
+        131       2500                      2500                                
+        132       2100                      2100                                
+
+EMPLOYEE_ID     SALARY COMMISSION_PCT  take_home                                
+----------- ---------- -------------- ----------                                
+        133       3300                      3300                                
+        134       2900                      2900                                
+        135       2400                      2400                                
+        136       2200                      2200                                
+        137       3600                      3600                                
+        138       3200                      3200                                
+        139       2700                      2700                                
+        140       2500                      2500                                
+        141       3500                      3500                                
+        142       3100                      3100                                
+        143       2600                      2600                                
+
+EMPLOYEE_ID     SALARY COMMISSION_PCT  take_home                                
+----------- ---------- -------------- ----------                                
+        144       2500                      2500                                
+        145      14000             .4      19600                                
+        146      13500             .3      17550                                
+        147      12000             .3      15600                                
+        148      11000             .3      14300                                
+        149      10500             .2      12600                                
+        150      10000             .3      13000                                
+        151       9500            .25      11875                                
+        152       9000            .25      11250                                
+        153       8000             .2       9600                                
+        154       7500             .2       9000                                
+
+EMPLOYEE_ID     SALARY COMMISSION_PCT  take_home                                
+----------- ---------- -------------- ----------                                
+        155       7000            .15       8050                                
+        156      10000            .35      13500                                
+        157       9500            .35      12825                                
+        158       9000            .35      12150                                
+        159       8000             .3      10400                                
+        160       7500             .3       9750                                
+        161       7000            .25       8750                                
+        162      10500            .25      13125                                
+        163       9500            .15      10925                                
+        164       7200             .1       7920                                
+        165       6800             .1       7480                                
+
+EMPLOYEE_ID     SALARY COMMISSION_PCT  take_home                                
+----------- ---------- -------------- ----------                                
+        166       6400             .1       7040                                
+        167       6200             .1       6820                                
+        168      11500            .25      14375                                
+        169      10000             .2      12000                                
+        170       9600             .2      11520                                
+        171       7400            .15       8510                                
+        172       7300            .15       8395                                
+        173       6100             .1       6710                                
+        174      11000             .3      14300                                
+        175       8800            .25      11000                                
+        176       8600             .2      10320                                
+
+EMPLOYEE_ID     SALARY COMMISSION_PCT  take_home                                
+----------- ---------- -------------- ----------                                
+        177       8400             .2      10080                                
+        178       7000            .15       8050                                
+        179       6200             .1       6820                                
+        180       3200                      3200                                
+        181       3100                      3100                                
+        182       2500                      2500                                
+        183       2800                      2800                                
+        184       4200                      4200                                
+        185       4100                      4100                                
+        186       3400                      3400                                
+        187       3000                      3000                                
+
+EMPLOYEE_ID     SALARY COMMISSION_PCT  take_home                                
+----------- ---------- -------------- ----------                                
+        188       3800                      3800                                
+        189       3600                      3600                                
+        190       2900                      2900                                
+        191       2500                      2500                                
+        192       4000                      4000                                
+        193       3900                      3900                                
+        194       3200                      3200                                
+        195       2800                      2800                                
+        196       3100                      3100                                
+        197       3000                      3000                                
+        198       2600                      2600                                
+
+EMPLOYEE_ID     SALARY COMMISSION_PCT  take_home                                
+----------- ---------- -------------- ----------                                
+        199       2600                      2600                                
+        200       4400                      4400                                
+        201      13000                     13000                                
+        202       6000                      6000                                
+        203       6500                      6500                                
+        204      10000                     10000                                
+        205      12008                     12008                                
+        206       8300                      8300                                
+
+107 rows selected.
+
+SQL> select nvl(commission_pct,"Available","Not Available") from dual;
+select nvl(commission_pct,"Available","Not Available") from dual
+       *
+ERROR at line 1:
+ORA-00909: invalid number of arguments 
+
+
+SQL> select nvl(commission_pct,'Available','Not Available') from dual;
+select nvl(commission_pct,'Available','Not Available') from dual
+       *
+ERROR at line 1:
+ORA-00909: invalid number of arguments 
+
+
+SQL> select nvl2(commission_pct,'Available','Not Available') from dual;
+select nvl2(commission_pct,'Available','Not Available') from dual
+            *
+ERROR at line 1:
+ORA-00904: "COMMISSION_PCT": invalid identifier 
+
+
+SQL> select nvl2(commission_pct,'Available','Not Available') from employees;
+
+NVL2(COMMISSI                                                                   
+-------------                                                                   
+Not Available                                                                   
+Not Available                                                                   
+Not Available                                                                   
+Not Available                                                                   
+Not Available                                                                   
+Not Available                                                                   
+Not Available                                                                   
+Not Available                                                                   
+Not Available                                                                   
+Not Available                                                                   
+Not Available                                                                   
+
+NVL2(COMMISSI                                                                   
+-------------                                                                   
+Not Available                                                                   
+Not Available                                                                   
+Not Available                                                                   
+Not Available                                                                   
+Not Available                                                                   
+Not Available                                                                   
+Not Available                                                                   
+Not Available                                                                   
+Not Available                                                                   
+Not Available                                                                   
+Not Available                                                                   
+
+NVL2(COMMISSI                                                                   
+-------------                                                                   
+Not Available                                                                   
+Not Available                                                                   
+Not Available                                                                   
+Not Available                                                                   
+Not Available                                                                   
+Not Available                                                                   
+Not Available                                                                   
+Not Available                                                                   
+Not Available                                                                   
+Not Available                                                                   
+Not Available                                                                   
+
+NVL2(COMMISSI                                                                   
+-------------                                                                   
+Not Available                                                                   
+Not Available                                                                   
+Not Available                                                                   
+Not Available                                                                   
+Not Available                                                                   
+Not Available                                                                   
+Not Available                                                                   
+Not Available                                                                   
+Not Available                                                                   
+Not Available                                                                   
+Not Available                                                                   
+
+NVL2(COMMISSI                                                                   
+-------------                                                                   
+Not Available                                                                   
+Available                                                                       
+Available                                                                       
+Available                                                                       
+Available                                                                       
+Available                                                                       
+Available                                                                       
+Available                                                                       
+Available                                                                       
+Available                                                                       
+Available                                                                       
+
+NVL2(COMMISSI                                                                   
+-------------                                                                   
+Available                                                                       
+Available                                                                       
+Available                                                                       
+Available                                                                       
+Available                                                                       
+Available                                                                       
+Available                                                                       
+Available                                                                       
+Available                                                                       
+Available                                                                       
+Available                                                                       
+
+NVL2(COMMISSI                                                                   
+-------------                                                                   
+Available                                                                       
+Available                                                                       
+Available                                                                       
+Available                                                                       
+Available                                                                       
+Available                                                                       
+Available                                                                       
+Available                                                                       
+Available                                                                       
+Available                                                                       
+Available                                                                       
+
+NVL2(COMMISSI                                                                   
+-------------                                                                   
+Available                                                                       
+Available                                                                       
+Available                                                                       
+Not Available                                                                   
+Not Available                                                                   
+Not Available                                                                   
+Not Available                                                                   
+Not Available                                                                   
+Not Available                                                                   
+Not Available                                                                   
+Not Available                                                                   
+
+NVL2(COMMISSI                                                                   
+-------------                                                                   
+Not Available                                                                   
+Not Available                                                                   
+Not Available                                                                   
+Not Available                                                                   
+Not Available                                                                   
+Not Available                                                                   
+Not Available                                                                   
+Not Available                                                                   
+Not Available                                                                   
+Not Available                                                                   
+Not Available                                                                   
+
+NVL2(COMMISSI                                                                   
+-------------                                                                   
+Not Available                                                                   
+Not Available                                                                   
+Not Available                                                                   
+Not Available                                                                   
+Not Available                                                                   
+Not Available                                                                   
+Not Available                                                                   
+Not Available                                                                   
+
+107 rows selected.
+
+SQL> select nvl2(commission_pct,'Available',to_char(0)) from employees;
+
+NVL2(COMM                                                                       
+---------                                                                       
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+
+NVL2(COMM                                                                       
+---------                                                                       
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+
+NVL2(COMM                                                                       
+---------                                                                       
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+
+NVL2(COMM                                                                       
+---------                                                                       
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+
+NVL2(COMM                                                                       
+---------                                                                       
+0                                                                               
+Available                                                                       
+Available                                                                       
+Available                                                                       
+Available                                                                       
+Available                                                                       
+Available                                                                       
+Available                                                                       
+Available                                                                       
+Available                                                                       
+Available                                                                       
+
+NVL2(COMM                                                                       
+---------                                                                       
+Available                                                                       
+Available                                                                       
+Available                                                                       
+Available                                                                       
+Available                                                                       
+Available                                                                       
+Available                                                                       
+Available                                                                       
+Available                                                                       
+Available                                                                       
+Available                                                                       
+
+NVL2(COMM                                                                       
+---------                                                                       
+Available                                                                       
+Available                                                                       
+Available                                                                       
+Available                                                                       
+Available                                                                       
+Available                                                                       
+Available                                                                       
+Available                                                                       
+Available                                                                       
+Available                                                                       
+Available                                                                       
+
+NVL2(COMM                                                                       
+---------                                                                       
+Available                                                                       
+Available                                                                       
+Available                                                                       
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+
+NVL2(COMM                                                                       
+---------                                                                       
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+
+NVL2(COMM                                                                       
+---------                                                                       
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+
+107 rows selected.
+
+SQL> select nvl2(commission_pct,'Commission',to_char(0)) from employees;
+
+NVL2(COMMI                                                                      
+----------                                                                      
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+
+NVL2(COMMI                                                                      
+----------                                                                      
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+
+NVL2(COMMI                                                                      
+----------                                                                      
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+
+NVL2(COMMI                                                                      
+----------                                                                      
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+
+NVL2(COMMI                                                                      
+----------                                                                      
+0                                                                               
+Commission                                                                      
+Commission                                                                      
+Commission                                                                      
+Commission                                                                      
+Commission                                                                      
+Commission                                                                      
+Commission                                                                      
+Commission                                                                      
+Commission                                                                      
+Commission                                                                      
+
+NVL2(COMMI                                                                      
+----------                                                                      
+Commission                                                                      
+Commission                                                                      
+Commission                                                                      
+Commission                                                                      
+Commission                                                                      
+Commission                                                                      
+Commission                                                                      
+Commission                                                                      
+Commission                                                                      
+Commission                                                                      
+Commission                                                                      
+
+NVL2(COMMI                                                                      
+----------                                                                      
+Commission                                                                      
+Commission                                                                      
+Commission                                                                      
+Commission                                                                      
+Commission                                                                      
+Commission                                                                      
+Commission                                                                      
+Commission                                                                      
+Commission                                                                      
+Commission                                                                      
+Commission                                                                      
+
+NVL2(COMMI                                                                      
+----------                                                                      
+Commission                                                                      
+Commission                                                                      
+Commission                                                                      
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+
+NVL2(COMMI                                                                      
+----------                                                                      
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+
+NVL2(COMMI                                                                      
+----------                                                                      
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+0                                                                               
+
+107 rows selected.
+
+SQL> select nvl2(commission_pct,'Commission','NA') from employees;
+
+NVL2(COMMI                                                                      
+----------                                                                      
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+
+NVL2(COMMI                                                                      
+----------                                                                      
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+
+NVL2(COMMI                                                                      
+----------                                                                      
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+
+NVL2(COMMI                                                                      
+----------                                                                      
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+
+NVL2(COMMI                                                                      
+----------                                                                      
+NA                                                                              
+Commission                                                                      
+Commission                                                                      
+Commission                                                                      
+Commission                                                                      
+Commission                                                                      
+Commission                                                                      
+Commission                                                                      
+Commission                                                                      
+Commission                                                                      
+Commission                                                                      
+
+NVL2(COMMI                                                                      
+----------                                                                      
+Commission                                                                      
+Commission                                                                      
+Commission                                                                      
+Commission                                                                      
+Commission                                                                      
+Commission                                                                      
+Commission                                                                      
+Commission                                                                      
+Commission                                                                      
+Commission                                                                      
+Commission                                                                      
+
+NVL2(COMMI                                                                      
+----------                                                                      
+Commission                                                                      
+Commission                                                                      
+Commission                                                                      
+Commission                                                                      
+Commission                                                                      
+Commission                                                                      
+Commission                                                                      
+Commission                                                                      
+Commission                                                                      
+Commission                                                                      
+Commission                                                                      
+
+NVL2(COMMI                                                                      
+----------                                                                      
+Commission                                                                      
+Commission                                                                      
+Commission                                                                      
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+
+NVL2(COMMI                                                                      
+----------                                                                      
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+
+NVL2(COMMI                                                                      
+----------                                                                      
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+
+107 rows selected.
+
+SQL> select nvl(commission_pct,to_number('NA')) from employees;
+select nvl(commission_pct,to_number('NA')) from employees
+                                    *
+ERROR at line 1:
+ORA-01722: invalid number 
+
+
+SQL> select nvl(to_char(commission_pct),'NA') from employees;
+
+NVL(TO_CHAR(COMMISSION_PCT),'NA')                                               
+----------------------------------------                                        
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+
+NVL(TO_CHAR(COMMISSION_PCT),'NA')                                               
+----------------------------------------                                        
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+
+NVL(TO_CHAR(COMMISSION_PCT),'NA')                                               
+----------------------------------------                                        
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+
+NVL(TO_CHAR(COMMISSION_PCT),'NA')                                               
+----------------------------------------                                        
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+
+NVL(TO_CHAR(COMMISSION_PCT),'NA')                                               
+----------------------------------------                                        
+NA                                                                              
+.4                                                                              
+.3                                                                              
+.3                                                                              
+.3                                                                              
+.2                                                                              
+.3                                                                              
+.25                                                                             
+.25                                                                             
+.2                                                                              
+.2                                                                              
+
+NVL(TO_CHAR(COMMISSION_PCT),'NA')                                               
+----------------------------------------                                        
+.15                                                                             
+.35                                                                             
+.35                                                                             
+.35                                                                             
+.3                                                                              
+.3                                                                              
+.25                                                                             
+.25                                                                             
+.15                                                                             
+.1                                                                              
+.1                                                                              
+
+NVL(TO_CHAR(COMMISSION_PCT),'NA')                                               
+----------------------------------------                                        
+.1                                                                              
+.1                                                                              
+.25                                                                             
+.2                                                                              
+.2                                                                              
+.15                                                                             
+.15                                                                             
+.1                                                                              
+.3                                                                              
+.25                                                                             
+.2                                                                              
+
+NVL(TO_CHAR(COMMISSION_PCT),'NA')                                               
+----------------------------------------                                        
+.2                                                                              
+.15                                                                             
+.1                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+
+NVL(TO_CHAR(COMMISSION_PCT),'NA')                                               
+----------------------------------------                                        
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+
+NVL(TO_CHAR(COMMISSION_PCT),'NA')                                               
+----------------------------------------                                        
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+NA                                                                              
+
+107 rows selected.
+
+SQL> select decode(job_id,'SA_REP',salary*1.3,'IT_PROG'salary*1.2,'SA_MAN'salary*1.1) from employees;
+select decode(job_id,'SA_REP',salary*1.3,'IT_PROG'salary*1.2,'SA_MAN'salary*1.1) from employees
+                                                  *
+ERROR at line 1:
+ORA-00907: missing right parenthesis 
+
+
+SQL> 
+SQL> select decode(job_id,'SA_REP',salary*1.3,'IT_PROG'salary*1.2,'SA_MAN',salary*1.1) from employees;
+select decode(job_id,'SA_REP',salary*1.3,'IT_PROG'salary*1.2,'SA_MAN',salary*1.1) from employees
+                                                  *
+ERROR at line 1:
+ORA-00907: missing right parenthesis 
+
+
+SQL> select decode(job_id,'SA_REP',salary*1.3,'IT_PROG',salary*1.2,'SA_MAN',salary*1.1) from employees;
+
+DECODE(JOB_ID,'SA_REP',SALARY*1.3,'IT_PROG',SALARY*1.2,'SA_MAN',SALARY*1.1)     
+---------------------------------------------------------------------------     
+                                                                                
+                                                                                
+                                                                                
+                                                                      10800     
+                                                                       7200     
+                                                                       5760     
+                                                                       5760     
+                                                                       5040     
+                                                                                
+                                                                                
+                                                                                
+
+DECODE(JOB_ID,'SA_REP',SALARY*1.3,'IT_PROG',SALARY*1.2,'SA_MAN',SALARY*1.1)     
+---------------------------------------------------------------------------     
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+
+DECODE(JOB_ID,'SA_REP',SALARY*1.3,'IT_PROG',SALARY*1.2,'SA_MAN',SALARY*1.1)     
+---------------------------------------------------------------------------     
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+
+DECODE(JOB_ID,'SA_REP',SALARY*1.3,'IT_PROG',SALARY*1.2,'SA_MAN',SALARY*1.1)     
+---------------------------------------------------------------------------     
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+
+DECODE(JOB_ID,'SA_REP',SALARY*1.3,'IT_PROG',SALARY*1.2,'SA_MAN',SALARY*1.1)     
+---------------------------------------------------------------------------     
+                                                                                
+                                                                      15400     
+                                                                      14850     
+                                                                      13200     
+                                                                      12100     
+                                                                      11550     
+                                                                      13000     
+                                                                      12350     
+                                                                      11700     
+                                                                      10400     
+                                                                       9750     
+
+DECODE(JOB_ID,'SA_REP',SALARY*1.3,'IT_PROG',SALARY*1.2,'SA_MAN',SALARY*1.1)     
+---------------------------------------------------------------------------     
+                                                                       9100     
+                                                                      13000     
+                                                                      12350     
+                                                                      11700     
+                                                                      10400     
+                                                                       9750     
+                                                                       9100     
+                                                                      13650     
+                                                                      12350     
+                                                                       9360     
+                                                                       8840     
+
+DECODE(JOB_ID,'SA_REP',SALARY*1.3,'IT_PROG',SALARY*1.2,'SA_MAN',SALARY*1.1)     
+---------------------------------------------------------------------------     
+                                                                       8320     
+                                                                       8060     
+                                                                      14950     
+                                                                      13000     
+                                                                      12480     
+                                                                       9620     
+                                                                       9490     
+                                                                       7930     
+                                                                      14300     
+                                                                      11440     
+                                                                      11180     
+
+DECODE(JOB_ID,'SA_REP',SALARY*1.3,'IT_PROG',SALARY*1.2,'SA_MAN',SALARY*1.1)     
+---------------------------------------------------------------------------     
+                                                                      10920     
+                                                                       9100     
+                                                                       8060     
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+
+DECODE(JOB_ID,'SA_REP',SALARY*1.3,'IT_PROG',SALARY*1.2,'SA_MAN',SALARY*1.1)     
+---------------------------------------------------------------------------     
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+
+DECODE(JOB_ID,'SA_REP',SALARY*1.3,'IT_PROG',SALARY*1.2,'SA_MAN',SALARY*1.1)     
+---------------------------------------------------------------------------     
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+
+107 rows selected.
+
+SQL> select decode(job_id,'SA_REP',salary*1.3,'IT_PROG',salary*1.2,'SA_MAN',salary*1.1,salary)  "NEW_SAL" from employees;
+
+   NEW_SAL                                                                      
+----------                                                                      
+     24000                                                                      
+     17000                                                                      
+     17000                                                                      
+     10800                                                                      
+      7200                                                                      
+      5760                                                                      
+      5760                                                                      
+      5040                                                                      
+     12008                                                                      
+      9000                                                                      
+      8200                                                                      
+
+   NEW_SAL                                                                      
+----------                                                                      
+      7700                                                                      
+      7800                                                                      
+      6900                                                                      
+     11000                                                                      
+      3100                                                                      
+      2900                                                                      
+      2800                                                                      
+      2600                                                                      
+      2500                                                                      
+      8000                                                                      
+      8200                                                                      
+
+   NEW_SAL                                                                      
+----------                                                                      
+      7900                                                                      
+      6500                                                                      
+      5800                                                                      
+      3200                                                                      
+      2700                                                                      
+      2400                                                                      
+      2200                                                                      
+      3300                                                                      
+      2800                                                                      
+      2500                                                                      
+      2100                                                                      
+
+   NEW_SAL                                                                      
+----------                                                                      
+      3300                                                                      
+      2900                                                                      
+      2400                                                                      
+      2200                                                                      
+      3600                                                                      
+      3200                                                                      
+      2700                                                                      
+      2500                                                                      
+      3500                                                                      
+      3100                                                                      
+      2600                                                                      
+
+   NEW_SAL                                                                      
+----------                                                                      
+      2500                                                                      
+     15400                                                                      
+     14850                                                                      
+     13200                                                                      
+     12100                                                                      
+     11550                                                                      
+     13000                                                                      
+     12350                                                                      
+     11700                                                                      
+     10400                                                                      
+      9750                                                                      
+
+   NEW_SAL                                                                      
+----------                                                                      
+      9100                                                                      
+     13000                                                                      
+     12350                                                                      
+     11700                                                                      
+     10400                                                                      
+      9750                                                                      
+      9100                                                                      
+     13650                                                                      
+     12350                                                                      
+      9360                                                                      
+      8840                                                                      
+
+   NEW_SAL                                                                      
+----------                                                                      
+      8320                                                                      
+      8060                                                                      
+     14950                                                                      
+     13000                                                                      
+     12480                                                                      
+      9620                                                                      
+      9490                                                                      
+      7930                                                                      
+     14300                                                                      
+     11440                                                                      
+     11180                                                                      
+
+   NEW_SAL                                                                      
+----------                                                                      
+     10920                                                                      
+      9100                                                                      
+      8060                                                                      
+      3200                                                                      
+      3100                                                                      
+      2500                                                                      
+      2800                                                                      
+      4200                                                                      
+      4100                                                                      
+      3400                                                                      
+      3000                                                                      
+
+   NEW_SAL                                                                      
+----------                                                                      
+      3800                                                                      
+      3600                                                                      
+      2900                                                                      
+      2500                                                                      
+      4000                                                                      
+      3900                                                                      
+      3200                                                                      
+      2800                                                                      
+      3100                                                                      
+      3000                                                                      
+      2600                                                                      
+
+   NEW_SAL                                                                      
+----------                                                                      
+      2600                                                                      
+      4400                                                                      
+     13000                                                                      
+      6000                                                                      
+      6500                                                                      
+     10000                                                                      
+     12008                                                                      
+      8300                                                                      
+
+107 rows selected.
+
+SQL> select emp_id,job_id,salary "OLD_SAL",
+  2  
